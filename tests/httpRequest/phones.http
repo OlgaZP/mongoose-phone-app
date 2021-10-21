@@ -1,0 +1,35 @@
+GET http://127.0.0.1:5000/api/phones HTTP/1.1
+
+###
+GET http://127.0.0.1:5000/api/phones/6171c3116ea50b69a5cbd425 HTTP/1.1
+
+###
+POST http://127.0.0.1:5000/api/phones HTTP/1.1
+Content-Type: application/json
+
+{
+    "brand": "Mongoose",
+    "model": "Third 2",    
+    "displaySize": 6, 
+    "systemType": "Android",   
+    "camerasCount": 1,
+    "isNFS": false   
+}
+
+###
+PATCH http://127.0.0.1:5000/api/phones/6171c55c67183193e6a216f4 HTTP/1.1
+Content-Type: application/json
+
+{
+    "model": "Changed Model and Date",
+    "systemType": "newOS",
+    "manufacturedDate": "2022-07-07",
+    "isNFS": false,
+    "displaySize": 11
+}
+
+###
+DELETE http://127.0.0.1:5000/api/phones/6171c33480fa04735f557db4 HTTP/1.1
+
+###
+GET http://127.0.0.1:5000/api/brands HTTP/1.1
