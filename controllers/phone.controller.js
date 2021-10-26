@@ -39,6 +39,7 @@ module.exports.createPhone = async (req, res, next) => {
     const preparedPhone = _.omit(createdPhone, ['_id', '__v']);
     if (createdPhone) {
       res.status(200).send(preparedPhone);
+      return;
     }
     next(createError(400, 'Bad request'));
   } catch (err) {
@@ -53,7 +54,9 @@ module.exports.updatePhoneById = async (req, res, next) => {
   } = req;
 
   try {
-    const updatedPhone = await Phone.findByIdAndUpdate(phoneId, body);
+    const updatedPhone = await Phone.findByIdAndUpdate({ _id: phoneId }, body, {
+      runValidators: true,
+    });
 
     if (updatedPhone) {
       return next();

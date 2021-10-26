@@ -7,7 +7,7 @@ app.use(express.json());
 
 app.use('/api', router);
 
-app.use((req, res, err, next) => {
+app.use((err, req, res, next) => {
   if (res.headersSent) {
     return;
   }
